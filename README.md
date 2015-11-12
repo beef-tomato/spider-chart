@@ -1,1 +1,2 @@
-# spider-chart
+# react-d3act-spider-chart
+ 
