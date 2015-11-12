@@ -4,7 +4,7 @@
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+ 
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
@@ -14691,7 +14691,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	'use strict';

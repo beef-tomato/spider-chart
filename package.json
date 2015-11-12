@@ -10,7 +10,7 @@
     "start": "open public/index.html"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/beef-tomato/spider-chart.git"
   },
   "keywords": [

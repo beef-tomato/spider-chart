@@ -14,7 +14,7 @@ module.exports = {
         { test: /\.js$/, exclude: /node_modules/, loaders: ['react-hot','babel', 'jsx']},
         { test: /\.css$/, loader: 'style!css'}
       ]
-    },
+    }, 
     plugins: [
       new webpack.NoErrorsPlugin()
     ]
