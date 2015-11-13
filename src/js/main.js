@@ -7,9 +7,10 @@ var rootElement = document.getElementsByClassName('wrapper')[0];
 
 require('../styles/main.js');
 
+
 console.log('reactDomRender!', rootElement);
 ReactDOM.render(
-  <App />,
+  <App yourObject="geth" />,
 
   // <App/>,
   rootElement

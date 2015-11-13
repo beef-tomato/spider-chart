@@ -61,7 +61,7 @@
 	__webpack_require__(163);
 
 	console.log('reactDomRender!', rootElement);
-	ReactDOM.render(React.createElement(App, null),
+	ReactDOM.render(React.createElement(App, { yourObject: "geth" }),
 
 	// <App/>,
 	rootElement);
@@ -19657,10 +19657,7 @@
 	var Chart = __webpack_require__(161);
 	var React = __webpack_require__(2);
 
-	var sampleData = [{ id: '5fbmzmtc', x: 7, y: 41, z: 6 }, { id: 's4f8phwm', x: 11, y: 45, z: 9 }];
-
-	// ...
-	var package1 = {
+	var object = {
 	  name: "jsonedit",
 	  version: "1.0.0",
 	  description: "",
@@ -19686,7 +19683,7 @@
 
 	  return {
 	    "name": "package1",
-	    "children": tree(package1)
+	    "children": tree(object)
 	  };
 	};
 

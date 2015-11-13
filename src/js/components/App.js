@@ -1,14 +1,7 @@
 var Chart = require('./Chart.js');
 var React = require('react');
 
-
-var sampleData = [
-  {id: '5fbmzmtc', x: 7, y: 41, z: 6},
-  {id: 's4f8phwm', x: 11, y: 45, z: 9},
-  // ...
-];
-
-var package1 = {
+var object = {
   name: "jsonedit",
   version: "1.0.0",
   description: "",
@@ -21,9 +14,7 @@ var package1 = {
   license: "ISC"
 };
 
-
 var getInitialData = function() {
-
 
   var tree = function(object) {
     return Object.keys(object).map(function(key) {
@@ -37,7 +28,7 @@ var getInitialData = function() {
 
   return {
     "name": "package1",
-    "children": tree(package1)
+    "children": tree(object)
   };
 }
 

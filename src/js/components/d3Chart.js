@@ -53,8 +53,8 @@ d3Chart.update = function(el, state) {
   // Re-compute the scales, and render the data points
   // var scales = this._scales(el, state.domain);
   // this._drawPoints(el, scales, state.data);
+ var svg = d3.select(el)
 
-//  var svg = el.getElementsByTagName('svg')[0];
 
 
 };
