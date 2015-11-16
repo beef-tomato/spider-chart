@@ -14,9 +14,9 @@ ReactDOM
 
 ```
 npm run build
+npm run dev:start
 ```
-
-Open the index.html file in your browser.
+Then go to localhost:8080/bundle in your browser.
 
 ### Recommended Reading
 
