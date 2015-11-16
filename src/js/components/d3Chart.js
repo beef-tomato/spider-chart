@@ -9,9 +9,9 @@ d3Chart.create = function(el, props, state) {
 
   var svg = d3.select(el).append("svg")
       .attr('class', 'd3')
-      .attr("width", props.width)
+      .attr("width", props.width + 300)
       .attr("height", props.height)
-    .append("g")
+      .append("g")
       .attr("transform", "translate(40,0)");
 //      .attr('class', 'd3-points');
 
@@ -21,21 +21,28 @@ d3Chart.create = function(el, props, state) {
 
   var json = state.data;
 
-  var nodes = tree.nodes(json),
-      links = tree.links(nodes);
+  var nodes = tree.nodes(json);
+  nodes.forEach(function(node){
+    node.y += 50;
+  });
+  var links = tree.links(nodes);
+
+      console.log(links);
+      console.log(nodes);
 
   var link = svg.selectAll("path.link")
       .data(links)
-    .enter().append("path")
+      .enter().append("path")
       .attr("class", "link")
       .style("fill", "none")
       .attr("stroke-width", 1)
       .attr("stroke", "black")
       .attr("d", diagonal);
 
+
   var node = svg.selectAll("g.node")
       .data(nodes)
-    .enter().append("g")
+      .enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
 
