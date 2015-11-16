@@ -1,3 +1,5 @@
+var d3 = require('d3');
+
 var d3Chart = {};
 
 d3Chart.create = function(el, props, state) {
@@ -26,6 +28,9 @@ d3Chart.create = function(el, props, state) {
       .data(links)
     .enter().append("path")
       .attr("class", "link")
+      .style("fill", "none")
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
       .attr("d", diagonal);
 
   var node = svg.selectAll("g.node")
