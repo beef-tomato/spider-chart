@@ -6,8 +6,8 @@ An app that takes a json file and visualises the structure. The file implements 
 
 ### Dependencies
 
-React
-d3
+React  
+d3  
 ReactDOM
 
 ### How to run?
