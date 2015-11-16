@@ -40,8 +40,7 @@ var ObjectFunc = React.createClass({
     return (
       <div className="App">
         <Chart
-          data={this.state.data}
-          domain={this.state.domain} />
+          data={this.state.data}/>
       </div>
     );
   }
