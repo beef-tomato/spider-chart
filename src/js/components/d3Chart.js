@@ -4,64 +4,78 @@ var d3Chart = {};
 
 d3Chart.create = function(el, props, state) {
 
-  var diagonal = d3.svg.diagonal()
-      .projection(function(d) { return [d.y, d.x]; });
 
   var svg = d3.select(el).append("svg")
       .attr('class', 'd3')
       .attr("width", props.width + 300)
-      .attr("height", props.height)
+      .attr("height", props.height + 100)
       .append("g")
       .attr("transform", "translate(40,0)");
 //      .attr('class', 'd3-points');
 
 
-  var tree = d3.layout.tree()
-      .size([props.height, props.width - 160]);
-
-  var json = state.data;
-
-  var nodes = tree.nodes(json);
-  nodes.forEach(function(node){
-    node.y += 50;
-  });
-  var links = tree.links(nodes);
-
-      console.log(links);
-      console.log(nodes);
-
-  var link = svg.selectAll("path.link")
-      .data(links)
-      .enter().append("path")
-      .attr("class", "link")
-      .style("fill", "none")
-      .attr("stroke-width", 1)
-      .attr("stroke", "black")
-      .attr("d", diagonal);
-
-
-  var node = svg.selectAll("g.node")
-      .data(nodes)
-      .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-
-  node.append("circle")
-      .attr("r", 4.5);
-
-  node.append("text")
-      .attr("dx", function(d) { return d.children ? -8 : 8; })
-      .attr("dy", 3)
-      .attr("text-anchor", function(d) { return d.children ? "end" : "start"; })
-      .text(function(d) { return d.name; });
-
-
   //d3.select(self.frameElement).style("height", height + "px");
 
-  //this.update(el, state);
+  this.update(el, state);
 };
 
 d3Chart.update = function(el, state) {
+
+  // var svg = d3.selectAll("svg");
+  var g = d3.select("g");
+
+  var diagonal = d3.svg.diagonal()
+      .projection(function(d) { return [d.y, d.x]; });
+
+    var tree = d3.layout.tree()
+        .size([state.height, state.width - 160]);
+
+    var json = state.data;
+
+    var nodes = tree.nodes(json);
+    nodes.forEach(function(node){
+      node.y += 50;
+      node.x += 10;
+      if (!node.children) {
+        node.y = node.parent.y+30;
+      }
+    });
+    var links = tree.links(nodes);
+
+        console.log(links);
+        console.log(nodes);
+
+    var link = g.selectAll("path.link")
+        .data(links)
+        .enter().append("path")
+        .attr("class", "link")
+        .style("fill", "none")
+        .attr("stroke-width", 1)
+        .attr("stroke", "lightgrey")
+        .attr("d", diagonal);
+
+
+    var node = g.selectAll(".node")
+        .data(nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+    node.append("circle")
+      .attr("fill", function(d) {
+        return d.children ? "black" : "white";
+      })
+      .attr("stroke-width", 1)
+      .attr("stroke", "grey")
+      .attr("r", 4.5);
+
+    node.append("text")
+        .attr("dx", function(d) { return d.children ? -8 : 8; })
+        .attr("dy", 3)
+        .attr("text-anchor", function(d) { return d.children ? "end" : "start"; })
+        .text(function(d) { return d.name; });
+
+
   // Re-compute the scales, and render the data points
   // var scales = this._scales(el, state.domain);
   // this._drawPoints(el, scales, state.data);
