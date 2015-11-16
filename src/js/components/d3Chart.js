@@ -1,3 +1,5 @@
+var d3 = require('d3');
+
 var d3Chart = {};
 
 d3Chart.create = function(el, props, state) {
@@ -26,6 +28,9 @@ d3Chart.create = function(el, props, state) {
       .data(links)
     .enter().append("path")
       .attr("class", "link")
+      .style("fill", "none")
+      .attr("stroke-width", 1)
+      .attr("stroke", "black")
       .attr("d", diagonal);
 
   var node = svg.selectAll("g.node")
@@ -53,8 +58,8 @@ d3Chart.update = function(el, state) {
   // Re-compute the scales, and render the data points
   // var scales = this._scales(el, state.domain);
   // this._drawPoints(el, scales, state.data);
+ var svg = d3.select(el)
 
-//  var svg = el.getElementsByTagName('svg')[0];
 
 
 };

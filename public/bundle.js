@@ -58,13 +58,10 @@
 	var App = __webpack_require__(160);
 	var rootElement = document.getElementsByClassName('wrapper')[0];
 
-	__webpack_require__(163);
+	__webpack_require__(164);
 
 	console.log('reactDomRender!', rootElement);
-	ReactDOM.render(React.createElement(App, null),
-
-	// <App/>,
-	rootElement);
+	ReactDOM.render(React.createElement(App, null), rootElement);
 
 /***/ },
 /* 2 */
@@ -19654,13 +19651,10 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Chart = __webpack_require__(161);
 	var React = __webpack_require__(2);
+	var ObjectFunc = __webpack_require__(161);
 
-	var sampleData = [{ id: '5fbmzmtc', x: 7, y: 41, z: 6 }, { id: 's4f8phwm', x: 11, y: 45, z: 9 }];
-
-	// ...
-	var package1 = {
+	var objectJSON = {
 	  name: "jsonedit",
 	  version: "1.0.0",
 	  description: "",
@@ -19673,25 +19667,49 @@
 	  license: "ISC"
 	};
 
-	var getInitialData = function () {
-
-	  var tree = function (object) {
-	    return Object.keys(object).map(function (key) {
-	      return {
-	        "name": key,
-	        "children": typeof object[key] === 'string' ? [{ "name": object[key] }] : tree(object[key])
-	      };
-	    });
-	  };
-
-	  return {
-	    "name": "package1",
-	    "children": tree(package1)
-	  };
-	};
-
 	var App = React.createClass({ displayName: "App",
+
+	  render: function () {
+	    return React.createElement("div", { className: "App" }, React.createElement(ObjectFunc, {
+	      objectJSON: objectJSON }));
+	  }
+	});
+
+	module.exports = App;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Chart = __webpack_require__(162);
+	var React = __webpack_require__(2);
+
+	var ObjectFunc = React.createClass({ displayName: "ObjectFunc",
+
+	  propTypes: {
+	    objectJSON: React.PropTypes.object
+	  },
+
 	  getInitialState: function () {
+	    var object = this.props.objectJSON;
+
+	    var getInitialData = function () {
+
+	      var tree = function (object) {
+	        return Object.keys(object).map(function (key) {
+	          return {
+	            "name": key,
+	            "children": typeof object[key] === 'string' ? [{ "name": object[key] }] : tree(object[key])
+	          };
+	        });
+	      };
+
+	      return {
+	        "name": "package1",
+	        "children": tree(object)
+	      };
+	    };
+
 	    return {
 	      data: getInitialData(),
 	      domain: { x: [0, 30], y: [0, 100] }
@@ -19705,14 +19723,13 @@
 	  }
 	});
 
-	module.exports = App;
-	// React.renderComponent(App(), document.body);
+	module.exports = ObjectFunc;
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var d3Chart = __webpack_require__(162);
+	var d3Chart = __webpack_require__(163);
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 
@@ -19755,7 +19772,7 @@
 	module.exports = Chart;
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports) {
 
 	var d3Chart = {};
@@ -19801,9 +19818,7 @@
 	  // Re-compute the scales, and render the data points
 	  // var scales = this._scales(el, state.domain);
 	  // this._drawPoints(el, scales, state.data);
-
-	  //  var svg = el.getElementsByTagName('svg')[0];
-
+	  var svg = d3.select(el);
 	};
 
 	d3Chart.destroy = function (el) {
@@ -19854,24 +19869,24 @@
 	module.exports = d3Chart;
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(164);
+	__webpack_require__(165);
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(165);
+	var content = __webpack_require__(166);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(167)(content, {});
+	var update = __webpack_require__(168)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -19888,10 +19903,10 @@
 	}
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(166)();
+	exports = module.exports = __webpack_require__(167)();
 	// imports
 
 
@@ -19902,7 +19917,7 @@
 
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports) {
 
 	/*
@@ -19958,7 +19973,7 @@
 
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

@@ -4,8 +4,7 @@ var ReactDOM  = require('react-dom');
 
 var Chart = React.createClass({
   propTypes: {
-    data: React.PropTypes.object,
-    domain: React.PropTypes.object
+    data: React.PropTypes.object
   },
 
   componentDidMount: function() {
@@ -23,8 +22,8 @@ var Chart = React.createClass({
 
   getChartState: function() {
     return {
-      data: this.props.data,
-      domain: this.props.domain
+      data: this.props.data
+      
     };
   },
 

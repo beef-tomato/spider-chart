@@ -10,7 +10,7 @@
     "start": "open public/index.html"
   },
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "git+https://github.com/beef-tomato/spider-chart.git"
   },
   "keywords": [
@@ -27,6 +27,7 @@
     "babel-core": "^6.0.15",
     "babel-loader": "^6.0.0",
     "css-loader": "^0.21.0",
+    "d3": "^3.5.8",
     "jsx-loader": "^0.13.2",
     "react": "^0.14.1",
     "react-dom": "^0.14.2",
